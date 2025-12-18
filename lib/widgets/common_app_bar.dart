@@ -4,13 +4,13 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:sizer/sizer.dart';
 
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final bool? isProductListPage;
+  final bool isProductListPage;
   final bool isHomePage;
   final String? title;
 
   const CommonAppBar({
     super.key,
-    this.isProductListPage = false,
+    required this.isProductListPage,
     required this.isHomePage,
     this.title,
   });
@@ -38,15 +38,47 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [SvgPicture.asset("assets/svgs/image.svg", height: 35)],
             )
-          : Text(
-              title!,
-              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
-            ),
+          : isProductListPage
+          ? Center(
+              child: Text(
+                title ?? "",
+                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+              ),
+            )
+          : SizedBox.shrink(),
 
       actions: [
         Row(
           children: [
-            Icon(PhosphorIconsBold.bell, color: Colors.black),
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Icon(PhosphorIconsBold.bell, color: Colors.black),
+                Positioned(
+                  top: -1,
+                  right: -1,
+                  child: Container(
+                    width: 15,
+                    height: 15,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Center(
+                      child: Text(
+                        "9+",
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
             SizedBox(width: 20),
             Icon(PhosphorIconsBold.shoppingCart, color: Colors.black),
             SizedBox(width: 40),
