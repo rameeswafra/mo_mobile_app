@@ -2,26 +2,31 @@ import 'package:flutter/material.dart';
 
 class CommonSectionHeader extends StatelessWidget {
   final String title;
+  final double? fontSize;
+  final FontWeight? fontWeight;
+
 
   const CommonSectionHeader({
     super.key,
     required this.title,
+    this.fontSize,
+    this.fontWeight,
+
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(15.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
               Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                style:  TextStyle(
+                  fontSize: fontSize?? 18,
+                  fontWeight: fontWeight ?? FontWeight.bold,
                 ),
               ),
             ],
