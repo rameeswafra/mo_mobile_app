@@ -1,18 +1,18 @@
 class ProductsResponse {
-  final List<Product> products;
+  final List<ProductModel> productModel;
 
-  ProductsResponse({required this.products});
+  ProductsResponse({required this.productModel});
 
   factory ProductsResponse.fromJson(Map<String, dynamic> json) {
     return ProductsResponse(
-      products: (json['products'] as List)
-          .map((e) => Product.fromJson(e))
+      productModel: (json['products'] as List)
+          .map((e) => ProductModel.fromJson(e))
           .toList(),
     );
   }
 }
 
-class Product {
+class ProductModel {
   final int id;
   final String title;
   final String description;
@@ -36,7 +36,7 @@ class Product {
   final List<String> images;
   final String thumbnail;
 
-  Product({
+  ProductModel({
     required this.id,
     required this.title,
     required this.description,
@@ -61,8 +61,8 @@ class Product {
     required this.thumbnail,
   });
 
-  factory Product.fromJson(Map<String, dynamic> json) {
-    return Product(
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
       id: json['id'],
       title: json['title'],
       description: json['description'],
