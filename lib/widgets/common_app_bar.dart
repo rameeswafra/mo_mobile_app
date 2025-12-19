@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:sizer/sizer.dart';
 
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isProductListPage;
@@ -17,72 +17,88 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDarkMode = theme.brightness == Brightness.dark;
+
+    final backgroundColor = isDarkMode ? Colors.grey[900] : Colors.grey[100];
+    final iconColor = isDarkMode ? Colors.white : Colors.black;
+    final textColor = isDarkMode ? Colors.white : Colors.black;
+
     return AppBar(
       surfaceTintColor: Colors.transparent,
-      backgroundColor: Colors.grey.shade100,
+      backgroundColor: backgroundColor,
       elevation: 0,
       leading: isHomePage
           ? IconButton(
-              icon: const Icon(Icons.menu, color: Colors.black),
+              icon: Icon(Icons.menu, color: iconColor),
               onPressed: () {},
             )
           : IconButton(
-              icon: const Icon(Icons.arrow_back_outlined, color: Colors.black),
+              icon: Icon(Icons.arrow_back_outlined, color: iconColor),
               onPressed: () {
                 Navigator.pop(context);
               },
             ),
-
       title: isHomePage
           ? Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [SvgPicture.asset("assets/svgs/image.svg", height: 35)],
+              children: [
+                SvgPicture.asset(
+                  "assets/svgs/image.svg",
+                  height: 35,
+                  color: isDarkMode ? Colors.white : Colors.red,
+                ),
+              ],
             )
           : isProductListPage
           ? Center(
               child: Text(
                 title ?? "",
-                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: textColor,
+                ),
               ),
             )
           : SizedBox.shrink(),
-
       actions: [
-        Row(
-          children: [
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Icon(PhosphorIconsBold.bell, color: Colors.black),
-                Positioned(
-                  top: -1,
-                  right: -1,
-                  child: Container(
-                    width: 15,
-                    height: 15,
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Center(
-                      child: Text(
-                        "9+",
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w900,
-                          color: Colors.white,
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Icon(PhosphorIconsBold.bell, color: iconColor),
+                  Positioned(
+                    top: -1,
+                    right: -1,
+                    child: Container(
+                      width: 15,
+                      height: 15,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Center(
+                        child: Text(
+                          "9+",
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-
-            SizedBox(width: 20),
-            Icon(PhosphorIconsBold.shoppingCart, color: Colors.black),
-            SizedBox(width: 40),
-          ],
+                ],
+              ),
+              12.horizontalSpace,
+              Icon(PhosphorIconsBold.shoppingCart, color: iconColor),
+            ],
+          ),
         ),
       ],
     );
