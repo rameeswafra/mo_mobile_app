@@ -4,10 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductCarousel extends StatelessWidget {
   final List<String> productImages = [
-    "assets/svgs/banner.svg",
-    "assets/svgs/banner2.svg",
-    "assets/svgs/banner3.svg",
-    "assets/svgs/banner4.svg",
+    "assets/pngs/mo_1.png",
+    "assets/pngs/mo_2.png",
+    "assets/pngs/mo_3.png",
+    "assets/pngs/mo_4.png",
 
   ];
 
@@ -23,13 +23,19 @@ class ProductCarousel extends StatelessWidget {
       ),
       items: productImages.map((item) => Center(
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: SvgPicture.asset(
-            item,
-            fit: BoxFit.cover,
+          borderRadius: BorderRadius.circular(20),
+          child: Container(
+            height: 190,
             width: double.infinity,
+            color: Colors.grey.shade100,
+            padding: const EdgeInsets.all(12),
+            child: Image.asset(
+              item,
+              fit: BoxFit.contain,
+            ),
           ),
         ),
+
       )).toList(),
 
     );
