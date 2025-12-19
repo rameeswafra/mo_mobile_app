@@ -74,7 +74,6 @@ class ProductCard extends StatelessWidget {
                     placeholder: (context, url) => const Center(
                       child: CircularProgressIndicator(
                         strokeWidth: 2,
-
                         color: Colors.red,
                       ),
                     ),
