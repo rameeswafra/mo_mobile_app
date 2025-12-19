@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mo_app/screens/product_detail_page.dart';
 import 'package:mo_app/screens/search_screen.dart';
+import 'package:provider/provider.dart';
 import '../models/product_model.dart';
+import '../providers/wishlist_provider.dart';
 import '../widgets/common_app_bar.dart';
 import '../widgets/common_section_header.dart';
 
@@ -17,12 +19,11 @@ class ProductListPage extends StatefulWidget {
 }
 
 class _ProductListPageState extends State<ProductListPage> {
-
-
   List<ProductModel> allProducts = [];
   List<ProductModel> filteredProducts = [];
 
-  bool isFavorite = true;
+  Set<int> favoriteIds = {};
+
   List<ProductModel> displayProducts = [];
 
   @override
@@ -48,35 +49,6 @@ class _ProductListPageState extends State<ProductListPage> {
       filteredProducts.sort((a, b) => a.price.compareTo(b.price));
     });
   }
-
-  // void applyFilters() {
-  //   List<ProductModel> filtered = widget.products;
-  //
-  //   if (searchQuery.isNotEmpty) {
-  //     filtered = filtered.where((p) {
-  //       return p.title.toLowerCase().contains(searchQuery) ||
-  //           (p.brand ?? "").toLowerCase().contains(searchQuery);
-  //     }).toList();
-  //   }
-  //
-  //   if (filterInStock) {
-  //     filtered = filtered.where((p) => p.stock > 0).toList();
-  //   }
-  //
-  //   // Discount filter
-  //   if (filterDiscounted) {
-  //     filtered = filtered.where((p) => p.discountPercentage > 0).toList();
-  //   }
-  //
-  //   // Price range filter
-  //   filtered = filtered.where((p) {
-  //     return p.price >= priceRange.start && p.price <= priceRange.end;
-  //   }).toList();
-  //
-  //   setState(() {
-  //     displayProducts = filtered;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -278,14 +250,16 @@ class _ProductListPageState extends State<ProductListPage> {
                   itemBuilder: (context, index) {
                     final product = displayProducts[index];
                     final inStock = product.stock > 0;
+
                     return InkWell(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) =>
-                                ProductDetailsPage(products: product,
-                                productList: widget.products),
+                            builder: (_) => ProductDetailsPage(
+                              products: product,
+                              productList: widget.products,
+                            ),
                           ),
                         );
                       },
@@ -347,17 +321,30 @@ class _ProductListPageState extends State<ProductListPage> {
                                 Positioned(
                                   top: 6,
                                   right: 6,
-                                  child: IconButton(
-                                    icon: Icon(
-                                      isFavorite
-                                          ? Icons.favorite
-                                          : Icons.favorite_border,
-                                      color: Colors.red,
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        isFavorite = !isFavorite;
-                                      });
+                                  child: Consumer<WishlistProvider>(
+                                    builder: (context, wishlist, _) {
+                                      final isFavorite = wishlist.isFavorite(
+                                        product.id,
+                                      );
+
+                                      return IconButton(
+                                        icon: AnimatedSwitcher(
+                                          duration: const Duration(
+                                            milliseconds: 300,
+                                          ),
+                                          child: Icon(
+                                            isFavorite
+                                                ? Icons.favorite
+                                                : Icons.favorite_border,
+                                            key: ValueKey(isFavorite),
+                                            color: Colors.red,
+                                          ),
+                                        ),
+                                        iconSize: 30,
+                                        onPressed: () {
+                                          wishlist.toggleWishlist(product.id);
+                                        },
+                                      );
                                     },
                                   ),
                                 ),
