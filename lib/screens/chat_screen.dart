@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_app/screens/home_screen.dart';
 import '../widgets/common_app_bar.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -16,10 +17,16 @@ class _ChatScreenState extends State<ChatScreen> {
 
     return Scaffold(
       backgroundColor: bgColor,
-      appBar: const CommonAppBar(
+      appBar:  CommonAppBar(
         isHomePage: false,
         isProductListPage: true,
         title: "Let's Connect",
+        backButtonPress: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => HomeScreen()),
+          );
+        },
       ),
     );
   }

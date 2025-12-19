@@ -6,6 +6,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isProductListPage;
   final bool isHomePage;
+  final VoidCallback? backButtonPress;
   final String? title;
 
   const CommonAppBar({
@@ -13,6 +14,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.isProductListPage,
     required this.isHomePage,
     this.title,
+    this.backButtonPress,
   });
 
   @override
@@ -35,9 +37,13 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
             )
           : IconButton(
               icon: Icon(Icons.arrow_back_outlined, color: iconColor),
-              onPressed: () {
-                Navigator.pop(context);
-              },
+              onPressed:
+                  backButtonPress ??
+                  () {
+                    if (Navigator.canPop(context)) {
+                      Navigator.pop(context);
+                    }
+                  },
             ),
       title: isHomePage
           ? Row(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_app/screens/home_screen.dart';
 
 import '../widgets/common_app_bar.dart';
 
@@ -20,6 +21,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
         isHomePage: false,
         isProductListPage: true,
         title: "Profile",
+        backButtonPress: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => HomeScreen()),
+          );
+        },
       ),
     );
   }

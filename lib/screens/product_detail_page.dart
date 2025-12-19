@@ -346,13 +346,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                 itemCount: similarProducts.length,
                                 itemBuilder: (context, index) {
                                   return ProductCard(
-                                    labelName: "",
+                                    labelName: "NEW",
                                     imageUrl: similarProducts[index].thumbnail,
                                     title: similarProducts[index].title,
                                     price: similarProducts[index].price,
                                     isDiscountShow: true,
                                     oldPrice: 4500.00,
-                                    discount: "2000.00",
+                                    discount: "Rs 600.00",
                                   );
                                 },
                               ),

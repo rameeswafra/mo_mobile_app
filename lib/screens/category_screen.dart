@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mo_app/screens/home_screen.dart';
 import 'package:mo_app/widgets/common_app_bar.dart';
 
 class CategoryScreen extends StatefulWidget {
@@ -15,9 +16,17 @@ class _CategoryScreenState extends State<CategoryScreen> {
     final bgColor = isDark ? Colors.grey[900] : Colors.grey[100];
     return Scaffold(
       backgroundColor: bgColor,
-      appBar: CommonAppBar(isHomePage: false,
-      isProductListPage: true,
-      title: "Categories",),
+      appBar: CommonAppBar(
+        isHomePage: false,
+        isProductListPage: true,
+        title: "Categories",
+        backButtonPress: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => HomeScreen()),
+          );
+        },
+      ),
     );
   }
 }

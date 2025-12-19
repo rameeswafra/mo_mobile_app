@@ -240,6 +240,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       MaterialPageRoute(
                                         builder: (_) => ProductDetailsPage(
                                           products: productList[index],
+                                          productList: productList,
                                         ),
                                       ),
                                     );
@@ -308,6 +309,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       MaterialPageRoute(
                                         builder: (_) => ProductDetailsPage(
                                           products: productList[index],
+                                          productList: productList,
                                         ),
                                       ),
                                     );
