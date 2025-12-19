@@ -113,7 +113,7 @@ class ProductCard extends StatelessWidget {
               ],
             ),
             Padding(
-              padding:  EdgeInsets.all( 10),
+              padding: EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -179,7 +179,7 @@ Color getLabelColor(String label) {
       return Colors.orangeAccent;
     case "SIMILAR":
       return Colors.teal;
-      default:
+    default:
       return Colors.grey;
   }
 }
