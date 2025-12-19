@@ -11,11 +11,13 @@ class CategoryScreen extends StatefulWidget {
 class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final bgColor = isDark ? Colors.grey[900] : Colors.grey[100];
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
+      backgroundColor: bgColor,
       appBar: CommonAppBar(isHomePage: false,
       isProductListPage: true,
-      title: "Category Page",),
+      title: "Categories",),
     );
   }
 }
