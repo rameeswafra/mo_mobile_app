@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ? Colors.grey.shade800
         : Colors.grey.shade300;
     final searchText = isDarkMode ? Colors.white : Colors.black87;
-    final hintColor = isDarkMode ? Colors.white : Colors.black87;
+    final hintColor = isDarkMode ?Colors.white : Colors.black87;
     final arrowColor = isDarkMode ? Colors.white70 : Colors.black54;
 
     return Scaffold(
@@ -240,7 +240,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                       MaterialPageRoute(
                                         builder: (_) => ProductDetailsPage(
                                           products: productList[index],
-                                          productList: productList,
                                         ),
                                       ),
                                     );
@@ -309,7 +308,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                       MaterialPageRoute(
                                         builder: (_) => ProductDetailsPage(
                                           products: productList[index],
-                                          productList: productList,
                                         ),
                                       ),
                                     );
