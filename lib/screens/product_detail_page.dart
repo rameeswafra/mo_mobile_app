@@ -346,7 +346,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                 itemCount: similarProducts.length,
                                 itemBuilder: (context, index) {
                                   return ProductCard(
-                                    labelName: "NEW",
+                                    labelName: "SIMILAR",
                                     imageUrl: similarProducts[index].thumbnail,
                                     title: similarProducts[index].title,
                                     price: similarProducts[index].price,

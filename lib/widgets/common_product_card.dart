@@ -177,7 +177,9 @@ Color getLabelColor(String label) {
       return Colors.redAccent;
     case "TOP BUY":
       return Colors.orangeAccent;
-    default:
+    case "SIMILAR":
+      return Colors.teal;
+      default:
       return Colors.grey;
   }
 }
@@ -190,6 +192,8 @@ IconData getIconData(String label) {
       return Icons.brush;
     case "TOP BUY":
       return Icons.star;
+    case "SIMILAR":
+      return Icons.control_point_duplicate;
     default:
       return Icons.label;
   }
