@@ -13,6 +13,10 @@ class ProductCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDarkMode = theme.brightness == Brightness.dark;
+    final bgColor = isDarkMode ? Colors.grey[900] : Colors.grey[50];
+
     return CarouselSlider(
       options: CarouselOptions(
         autoPlay: true,
@@ -27,7 +31,7 @@ class ProductCarousel extends StatelessWidget {
           child: Container(
             height: 190,
             width: double.infinity,
-            color: Colors.grey.shade100,
+            color: bgColor,
             padding: const EdgeInsets.all(12),
             child: Image.asset(
               item,

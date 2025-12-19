@@ -89,12 +89,15 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
                       ),
                       child: Center(
                         child: Text(
-                          "9+",
+                          "10",
+
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 7,
                             fontWeight: FontWeight.w900,
                             color: Colors.white,
+
                           ),
+
                         ),
                       ),
                     ),
