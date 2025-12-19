@@ -11,11 +11,16 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      backgroundColor: Colors.grey.shade100,
-      appBar: CommonAppBar(isHomePage: false,
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final bgColor = isDark ? Colors.grey[900] : Colors.grey[100];
+
+    return Scaffold(
+      backgroundColor: bgColor,
+      appBar: const CommonAppBar(
+        isHomePage: false,
         isProductListPage: true,
-        title: "Chat Page",),
+        title: "Let's Connect",
+      ),
     );
   }
 }
