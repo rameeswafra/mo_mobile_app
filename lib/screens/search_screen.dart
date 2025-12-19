@@ -40,16 +40,12 @@ class _SearchScreenState extends State<SearchScreen> {
 
     final theme = Theme.of(context);
     final isDarkMode = theme.brightness == Brightness.dark;
-
-    final bgColor = isDarkMode ? Colors.black : Colors.grey.shade100;
     final searchBg = isDarkMode ? Colors.grey[900] : Colors.white;
     final searchBorder = isDarkMode
         ? Colors.grey.shade800
         : Colors.grey.shade300;
     final searchText = isDarkMode ? Colors.white : Colors.black87;
     final hintColor = theme.colorScheme.onSurface.withOpacity(0.6);
-
-
 
 
     return Scaffold(
@@ -96,7 +92,9 @@ class _SearchScreenState extends State<SearchScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (_) =>
-                      ProductDetailsPage(products: filteredProducts[index]),
+                      ProductDetailsPage(products: filteredProducts[index],
+                      productList: filteredProducts,
+                      ),
                 ),
               );
             },
