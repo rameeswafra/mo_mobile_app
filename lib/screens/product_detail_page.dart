@@ -353,6 +353,17 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                     isDiscountShow: true,
                                     oldPrice: 4500.00,
                                     discount: "Rs 600.00",
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (_) => ProductDetailsPage(
+                                            products: similarProducts[index],
+                                            productList: similarProducts,
+                                          ),
+                                        ),
+                                      );
+                                    },
                                   );
                                 },
                               ),
