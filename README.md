@@ -1,16 +1,19 @@
-# mo_app
+# 🛒 MO Marketplace – Flutter App
+### A Flutter-based e-commerce marketplace application developed as an assignment, inspired by the official MO Marketplace app.
+## 📱 Here is the sample UI 
+<img width="2203" height="432" alt="merged-image (1)" src="https://github.com/user-attachments/assets/795dbb28-8b5e-416e-bb5c-a4f9bfb9925b" />
 
-A new Flutter project.
+## 📱 Here is the sample DEMO
+https://drive.google.com/file/d/1yc9wAowqwV7NpVF-G4hWA8GQuiMXzcVN/view?usp=sharing
 
-## Getting Started
+## ✨ Features
+### 1.System-based Dark / Light theme
+### 2.Provider for state management
+### 3.SharedPreferences for local storage
+### 4.REST API integration
+### 5.Reusable & common widgets
+### 6.Responsive UI
 
-This project is a starting point for a Flutter application.
+## 🛠 Tech Stack
+### Flutter,Dart,Provider,SharedPreferences,Http
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
